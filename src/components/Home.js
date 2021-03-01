@@ -1,8 +1,12 @@
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 function Home(){
     return (
-        <div>My home page!</div>
+        <Row><Col>
+        My home page!
+    </Col></Row>
     );
 }
 
