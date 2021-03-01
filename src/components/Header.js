@@ -1,8 +1,12 @@
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-
-function Header(){
+function Header() {
     return (
-        <h2>Hello World!</h2>
+        <Row><Col>
+            <h2 style={{textAlign: "center"}}>Hello World!</h2>
+        </Col></Row>
+
     );
 }
 
