@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 
-function Login() {
+function Login(props) {
     const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,6 +12,7 @@ function Login() {
         if(email.trim().length === 0 || password.trim().length === 0) {
             return;
         }
+        props.onLoggedIn(email);
         history.push('/');
     }
 
