@@ -1,11 +1,13 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import A from './A';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import api from '../communication/api';
 
 function Home() {
     const [message, setMessage] = useState('');
     const [data, setData] = useState('');
+    const [places, setPlaces] = useState([]);
     
     let onDataReceivedFromA = (messageFromA) => {
         setMessage(messageFromA);
@@ -16,18 +18,18 @@ function Home() {
         setData(data);
     }
 
+    useEffect(() => {
+        if(places.length === 0) {            
+            api.getPlaces()
+            .then(x => setPlaces(x))
+            .catch(e => console.log(e));
+        }
+    });
+
     return (
         <Row><Col>
-            *******Home***********
-            <br /> My home page! <br />
-            <input type="button" value='Send Greetings to A' onClick={onButtonClicked} />
-            <br />
-            {message === '' ? '' : message}
-            <br />
-            <A sendData={onDataReceivedFromA} data={data}/>
-            <br />
-            *******/Home**********
-    </Col></Row>
+         
+        </Col></Row>
     );
 }
 
