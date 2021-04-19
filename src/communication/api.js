@@ -5,6 +5,11 @@ let getPlaces = () => {
     .then(response => response.json());
 }
 
+let add = (a, b) => {
+    return fetch(apiHost + `/add/${a}/${b}`)
+    .then(response => response.json());
+}
+
 let addPlace = (place) => {
     return fetch(apiHost + '/place', {
         method: 'post',
