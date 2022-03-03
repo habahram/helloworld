@@ -9,8 +9,15 @@ import Login from './components/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Menu from './components/Menu';
+import { useState } from 'react';
 
 function App() {
+  const [customer, setCustomer] = useState(undefined);
+
+  let customerLoggedInHandler = (customerEmail) => {
+    setCustomer(customerEmail);
+  }
+
   return (
     <HashRouter>
       <Container fluid>
@@ -21,7 +28,7 @@ function App() {
         </Row>
         <Row>
           <Col>
-            <Menu />
+            <Menu customer={customer} />
           </Col>
         </Row>
 
@@ -29,7 +36,7 @@ function App() {
           <Route exact path='/register' element={<Register />}>
 
           </Route>
-          <Route exact path='/login' element={<Login />}>
+          <Route exact path='/login' element={<Login customerLoggedIn={customerLoggedInHandler} />}>
 
           </Route>
           <Route exact path='/' element={<Home />} >
