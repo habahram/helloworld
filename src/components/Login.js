@@ -2,7 +2,7 @@ import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import local_temp_store from '../data_access_layer/local_temporarily_storage';
+import dataService from '../data_access_layer/local_temporarily_storage';
 
 
 const Login = (props) => {
@@ -23,7 +23,7 @@ const Login = (props) => {
 
     let onSubmitHandler = (e) => {
         e.preventDefault();
-         let found = local_temp_store.customers.find(x => 
+         let found = dataService.customers.find(x => 
             (x.email.toLowerCase() === email.toLowerCase()) && (x.password === password));
          if(found) {
              props.customerLoggedIn(email);
