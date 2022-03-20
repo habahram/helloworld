@@ -40,7 +40,7 @@ function App() {
           <Route exact path='/login' element={<Login customerLoggedIn={customerLoggedInHandler} />}>
 
           </Route>
-          <Route exact path='/quiz' element={<Quiz />} >
+          <Route exact path='/quiz/:id' element={<Quiz />} >
 
           </Route>
           <Route exact path='/' element={<Home />} >
