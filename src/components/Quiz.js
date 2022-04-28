@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Spinner from 'react-bootstrap/Spinner';
-import dataService from "../data_access_layer/local_temporarily_storage";
+import apiAccess from '../communication/APIAccess';
 import { useEffect, useState } from "react";
 
 const Quiz = () => {
@@ -16,9 +16,9 @@ const Quiz = () => {
 
     useEffect(() => {
         if(!quiz) {
-            let x = dataService.getQuiz(id);
-            setQuiz(x);
-            console.log(x);
+            apiAccess.getQuiz(id)
+            .then(x => setQuiz(x))
+            .catch(e => console.log(e));           
         }        
     });
 
@@ -37,7 +37,7 @@ const Quiz = () => {
                                 </Card.Text>
                             </Card.Body>
                             <ListGroup>
-                                {quiz.questions[currentQuestionNumber].choices.map(x =>
+                                {quiz.questions[currentQuestionNumber].choices.split(',').map(x =>
                                     <ListGroup.Item>{x}</ListGroup.Item>
                                 )}
                             </ListGroup>

@@ -20,8 +20,7 @@ const Home = () => {
          apiAccess.getFlowers()
          .then(x => setFlowers(x))
          .catch(e => {
-             console.log(e);
-             alert('Something went wrong.')
+             console.log(e);            
          })
     }, []);
 
