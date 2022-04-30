@@ -1,5 +1,5 @@
 import { useState  } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -11,6 +11,8 @@ const Login = (props) => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { from } = useParams();
+    console.log(`from in Login ${from}`);
     const navigate = useNavigate();
 
   
@@ -29,7 +31,11 @@ const Login = (props) => {
         .then(x => {
             if(x.done) {
                 props.customerLoggedIn(email);
-                navigate('/');
+                if(from) {
+                   navigate('/quiz/' + from);
+                } else {
+                    navigate('/');
+                }                
             } else {
                 alert('The credentials are not valid!');
             }

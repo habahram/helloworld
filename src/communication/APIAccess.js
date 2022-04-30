@@ -31,6 +31,21 @@ let apiAccess = {
             return x;
         });
     },
+    logout: (email, password) => {
+        return fetch(`${backendAddress}/logout`, {
+           method: 'Post',
+           credentials: "include",
+           headers: {
+               'Content-Type': 'application/json',
+               "Access-Control-Allow-Credentials": true
+           }
+        })
+        .then(x => x.json())
+        .then(x => {
+            console.log(x);
+            return x;
+        });
+    },
     getFlowers: () => {
         return fetch(`${backendAddress}/flowers`, {
             method: 'Get',
